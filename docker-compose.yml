@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+  web:
+    image: hitalos/laravel:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www
+    links:
+      - db
+    environment:
+      DB_HOST: db
+      DB_DATABASE: social
+      DB_USERNAME: username
+      DB_PASSWORD: password
+      DB_CONNECTION: mysql
+  db:
+    image: mysql/mysql-server:5.7
+    ports:
+        # <Port exposed> : < MySQL Port running inside container>
+        - '3306:3306'
+    expose:
+        - '3306'
+    volumes:
+        - my-db:/var/lib/mysql
+    environment:
+      # with mysql
+      MYSQL_DATABASE: social
+      MYSQL_USER: username
+      MYSQL_PASSWORD: password
+
+      # with postgres
+      POSTGRES_DB: dbname
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: p455w0rd
+volumes:
+  my-db:
