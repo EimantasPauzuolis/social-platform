@@ -8,7 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    @if(config('app.env') == 'local')
+        <script src="http://localhost:35729/livereload.js"></script>
+    @endif
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
