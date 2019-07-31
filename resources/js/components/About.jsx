@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
-import { Button, Card, H5 } from '@blueprintjs/core';
+import {
+  Button, Card, FormGroup, H2, InputGroup,
+} from '@blueprintjs/core';
+import { Container, Row, Col } from 'react-grid-system';
 
 class About extends Component {
   render() {
     return (
-      <div>
-        <Card>
-          <H5>
-            <a href="/">Analytical applications</a>
-          </H5>
-          <p>
-            User interfaces that enable people to interact smoothly with data, ask better questions,
-            and make better decisions.
-          </p>
-          {/* eslint-disable-next-line react/jsx-no-undef */}
-          <Button text="Explore products" />
-        </Card>
-      </div>
+      <Container className="py-3">
+        <Row>
+          <Col md={6} offset={{ md: 3 }}>
+            <Card>
+              <H2>Log In</H2>
+              <FormGroup label="Username">
+                <InputGroup leftIcon="user" />
+              </FormGroup>
+              <FormGroup label="Password">
+                <InputGroup leftIcon="key" />
+              </FormGroup>
+              <Button text="Log In" icon="log-in" />
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
